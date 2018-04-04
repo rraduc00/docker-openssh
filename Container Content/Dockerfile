@@ -7,7 +7,8 @@ RUN mkdir /var/run/sshd
 
 RUN useradd --create-home --shell /bin/bash test
 RUN echo 'test:test' | chpasswd
-RUN adduser test sudo ## permisos de root
+# Uncomment the following line if you'd like to be able to use sudo with test user:
+#RUN adduser test sudo # Allow test to use sudo
 
 RUN ssh-keygen -A
 ADD ./sshd_config /etc/ssh/sshd_config
