@@ -1,0 +1,39 @@
+#
+# JAILS
+#
+
+#
+# SSH servers
+#
+
+[sshd]
+
+# To use more aggressive sshd filter (inclusive sshd-ddos failregex):
+#filter = sshd-aggressive
+enabled  = true
+port    = ssh
+backend = systemd
+logpath = %(sshd_log)s
+maxretry = 3
+findtime = 600
+bantime = 100
+
+
+[sshd-ddos]
+# This jail corresponds to the standard configuration in Fail2ban.
+# The mail-whois action send a notification e-mail with a whois request
+# in the body.
+enabled  = true
+port    = ssh
+logpath = %(sshd_log)s
+maxretry = 3
+findtime = 600
+bantime = 100
+
+[selinux-ssh]
+enabled  = true
+port     = ssh
+backend = systemd
+logpath  = %(auditd_log)s
+
+
