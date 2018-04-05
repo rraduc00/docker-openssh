@@ -13,3 +13,6 @@ StrictModes yes
 RSAAuthentication yes
 PubKEyAuthentication yes
 UsePAM yes
+
+SyslogFacility AUTH
+LogLevel DEBUG
