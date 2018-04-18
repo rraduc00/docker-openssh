@@ -1,6 +1,6 @@
 [ssh]
  enabled = true
- maxretry = 3
+ maxretry = 2
  port = 22
  bantime = 100
  filter = sshd

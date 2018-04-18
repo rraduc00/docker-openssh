@@ -18,7 +18,7 @@ expect "$ "
 send "exit\r"
 
 set timeout -1
-spawn rsync -av -r -e ssh -oStrictHostKeyChecking=no /home/ $user@$ip:$ruto
+spawn rsync -av -r -e "ssh -oStrictHostKeyChecking=no" /home/ $user@$ip:$ruto
 expect "password:"
 send "$password\r"
 expect eof

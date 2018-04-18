@@ -5,7 +5,7 @@ sudo docker run --cap-add=NET_ADMIN --cap-add=NET_RAW -it <image>
 In the main working directory, there is a folder called Keys. Inside there are 2 RSA keys, complementary public and private ones. In order to connect using private RSa keys execute the following command from the main working directory. 
 	ssh -i ./Keys/id_rsa [USER]@localhost (-p port)
 
-# Substitue varaibles in cron job called BackupJob
+# ATTENTION CRONJOB! Substitue varables in the script called "prepareCronJobs.sh" located in the main working directory.
 sftpScript.sh <user> <password> <hostip>:<hostpathtosavecopy> 
 rsyncScript.sh <user> <password> <hostip>:<hostpathtosavecopy>  
 
@@ -15,4 +15,6 @@ ssh test@172.17.0.2 <script-name> <user> <password> <host-IP:path-to-copy-files>
 		ssh test@172.17.0.2 sftpScript.sh test test 172.17.0.1:/tmp/copytest
 
 # ATTENTION
+The parameter -oStrictHostKeyChecking=no is used in order to deal with the following problem. 
 The first time you connect with your host (from within the container) you must authorize (yes) the connection. If you execute the backupscripts without beforehand establish and manually accept an SSH connection to your host, they will fail.
+
