@@ -2,8 +2,17 @@
 sudo docker run --cap-add=NET_ADMIN --cap-add=NET_RAW -it <image>
 
 # Connect to container using private key
-
 In the main working directory, there is a folder called Keys. Inside there are 2 RSA keys, complementary public and private ones. In order to connect using private RSa keys execute the following command from the main working directory. 
 	ssh -i ./Keys/id_rsa [USER]@localhost (-p port)
 
+# Substitue varaibles in cron job called BackupJob
+sftpScript.sh <user> <password> <hostip>:<hostpathtosavecopy> 
+rsyncScript.sh <user> <password> <hostip>:<hostpathtosavecopy>  
 
+# Connect from outside the container to execute a backup script
+ssh test@172.17.0.2 <script-name> <user> <password> <host-IP:path-to-copy-files>
+	Example:
+		ssh test@172.17.0.2 sftpScript.sh test test 172.17.0.1:/tmp/copytest
+
+# ATTENTION
+The first time you connect with your host (from within the container) you must authorize (yes) the connection. If you execute the backupscripts without beforehand establish and manually accept an SSH connection to your host, they will fail.
