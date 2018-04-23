@@ -18,3 +18,5 @@ ssh test@172.17.0.2 <script-name> <user> <password> <host-IP:path-to-copy-files>
 The parameter -oStrictHostKeyChecking=no is used in order to deal with the following problem. 
 The first time you connect with your host (from within the container) you must authorize (yes) the connection. If you execute the backupscripts without beforehand establish and manually accept an SSH connection to your host, they will fail.
 
+# Banning
+Max connection attempts is set to 3. Please modify "jail.local" file in order to change it.

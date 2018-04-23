@@ -30,6 +30,10 @@ RUN chmod +x /bin/rsyncScript.sh /bin/sftpScript.sh
 COPY ./prepareCronJobs.sh /home/test
 RUN /home/test/prepareCronJobs.sh
 
+# Insert rsyslog conf
+COPY ./rsyslog.conf /etc/rsyslog.conf
+RUN chmod 644 /etc/rsyslog.conf
+
 # Configuring fail2ban
 COPY ./jail.local /etc/fail2ban/
 RUN chmod 644 /etc/fail2ban/jail.local
